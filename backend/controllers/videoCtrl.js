@@ -8,6 +8,7 @@ const {getTitle, getCaptions, getComments} = require('./api')
 // @route   POST /api/youtube
 // @access  Public
 const addVideo = asyncHandler(async (req, res) => {
+  console.log("Request body:", req.body);
   const {videoId} = req.body
   const blackRanges = videosRanges[videoId] ?? []
   if (blackRanges == []) {

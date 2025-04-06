@@ -1,3 +1,4 @@
 node_modules
 .env
 Google Web Store
+.vscode

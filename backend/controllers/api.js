@@ -24,6 +24,7 @@ async function getTitle(videoId) {
       id: videoId,
     },
   }
+  console.log(process.env.YT_VID_URL);
   const response = await axios.get(process.env.YT_VID_URL, config)
   return response.data['items'][0]['snippet']['title']
 }

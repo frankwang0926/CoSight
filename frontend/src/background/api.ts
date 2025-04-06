@@ -1,6 +1,6 @@
 import { LocalStorageUser, LocalStorageVideo } from "./storage"
 
-const API_URL = 'https://cosight.herokuapp.com/api/'
+const API_URL = 'https://cosight.onrender.com/api/'
 
 interface VideoData {
   videoId: string
@@ -31,6 +31,31 @@ interface VideoData {
   }[]
   status: 'null' | 'processing' | 'available'
 }
+
+/*
+async function backgroundFetch({
+  endpoint,
+  method = 'GET',
+  body = null,
+  token = null,
+}): Promise<any> {
+  return new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(
+      {
+        type: 'API_CALL',
+        payload: { endpoint, method, body, token },
+      },
+      (response) => {
+        if (!response || !response.success) {
+          reject(response?.error || 'Unknown error');
+        } else {
+          resolve(response.data);
+        }
+      }
+    );
+  });
+} */
+
 
 async function getVideo(videoId: string): Promise<VideoData> {
   const res = await fetch(`${API_URL}youtube/${videoId}`, {
@@ -138,7 +163,7 @@ async function userUpdate(form) {
   const user: LocalStorageUser = await res.json()
   chrome.storage.sync.set({ user })
   return user
-}
+} 
 
 export {
   VideoData,

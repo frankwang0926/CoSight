@@ -18,6 +18,9 @@
   "background": {
     "service_worker": "background.js"
   },
+  "host_permissions": [
+    "https://cosight.onrender.com/*"
+  ],
   "content_scripts": [
     {
       "matches": [
